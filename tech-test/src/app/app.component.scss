@@ -1,7 +1,41 @@
-.title-text{
-  font-size: 20px;
-  line-height: 1.5;
-  color: #20364b;
-  font-weight: 600;
-  font-family: 'ProximaNova', sans-serif;
+mat-toolbar {
+  justify-content: center;
+}
+
+.toolbar-nav {
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+}
+
+.nav-wrapper {
+  font-size: 14px;
+  display: flex;
+  column-gap: 1rem;
+  width: 100%;
+  max-width: 750px;
+}
+
+.button {
+  margin: .25rem 0 1.4rem 0;
+  padding: 0 2rem;
+}
+
+.search-field {
+  flex: 1 1 400px;
+}
+
+.select-field {
+  flex: 0 0 210px;
+}
+
+.task-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  gap: 15px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
 }

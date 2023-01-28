@@ -1,0 +1,21 @@
+<mat-card class="card" (dblclick)="onEditButtonClick()">
+  <mat-card-header class="task-header">
+    <mat-card-title>
+      <mat-icon (click)="onDoneClick()">check_circle{{checkIcon}}</mat-icon>
+      {{task.label}}
+    </mat-card-title>
+    <mat-card-subtitle>{{task.category}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{task.description}}</p>
+  </mat-card-content>
+  <div class="card-footer">
+    <div class="done-date" *ngIf="task.done">
+      <span>Task done: {{task.done}}</span>
+    </div>
+    <div class="buttons-group">
+      <mat-icon (click)="onEditButtonClick()">edit</mat-icon>
+      <mat-icon (click)="onDeleteButtonClick()">delete_outlined</mat-icon>
+    </div>
+  </div>
+</mat-card>

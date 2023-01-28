@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --light-bg: #F5F5F5;
+  --dark-bg: #303030;
+  --warn: #F44336;
+  --font-white: #FFFFFF;
+  --font-black: #000000;
+  --deep-purple-primary: #673AB7;
+  --deep-purple-accent: #FFD740;
+
+  --purple-green-primary: #9C27B0;
+  --purple-green-accent: #69F0AE;
+
+  --indigo-pink-primary: #3F51B5;
+  --indigo-pink-accent: #FF4081;
+
+  --pink-blue-gray-primary: #E91E63;
+  --pink-blue-gray-accent: #607D8B;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #F5F5F5}

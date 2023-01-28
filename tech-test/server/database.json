@@ -3,16 +3,93 @@
     {
       "id": 1,
       "label": "Kitchen Cleanup",
-      "description":  "Clean my dirty kitchen",
+      "description": "Clean my dirty kitchen 111",
       "category": "house",
       "done": false
     },
     {
-      "id": 2,
-      "label": "Taxes",
-      "description":  "Start doing my taxes and contact my accountant jhon for advice",
+      "id": 3,
+      "label": "paid Taxes",
+      "description": "paid taxes 911",
       "category": "bureaucracy",
-      "done": "22-10-2019"
+      "done": false
+    },
+    {
+      "label": "house",
+      "description": "my clean houe  33333",
+      "category": "house",
+      "done": false,
+      "id": 6
+    },
+    {
+      "label": "asg",
+      "description": "asgrr 44444",
+      "category": "bureaucracy",
+      "done": "26-01-2023",
+      "id": 12
+    },
+    {
+      "label": "ww",
+      "description": "www",
+      "category": "bureaucracy",
+      "done": "26-01-2023",
+      "id": 13
+    },
+    {
+      "label": "22 11 33",
+      "description": "22 33 11",
+      "category": "work",
+      "done": "26-01-2023",
+      "id": 14
+    },
+    {
+      "label": "ww 22 11",
+      "description": " ww ee qq 11 55 44",
+      "category": "house",
+      "done": "26-01-2023",
+      "id": 15
+    },
+    {
+      "label": "22",
+      "description": "22 33",
+      "category": "bureaucracy",
+      "done": false,
+      "id": 16
+    },
+    {
+      "label": "22",
+      "description": "33 11",
+      "category": "bureaucracy",
+      "done": false,
+      "id": 17
+    },
+    {
+      "label": "1",
+      "description": "1",
+      "category": "bureaucracy",
+      "done": "26-01-2023",
+      "id": 18
+    },
+    {
+      "label": "2",
+      "description": "2",
+      "category": "bureaucracy",
+      "done": "26-01-2023",
+      "id": 19
+    },
+    {
+      "label": "44",
+      "description": "44",
+      "category": "work",
+      "done": "26-01-2023",
+      "id": 20
+    },
+    {
+      "label": "777",
+      "description": "777",
+      "category": "work",
+      "done": "26-01-2023",
+      "id": 21
     }
   ]
 }

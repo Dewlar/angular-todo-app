@@ -1,0 +1,13 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+mat-form-field {
+  width: 450px;
+}
+
+button:last-of-type {
+  margin-right: auto;
+}

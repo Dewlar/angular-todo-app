@@ -1,2 +1,50 @@
-<h1 class="title-text">Welcome to Origin's Angular Technical Test: {{title}}</h1>
+<mat-toolbar color="primary">
+  <span>Welcome to Origin's Angular Technical Test: {{title}}</span>
+</mat-toolbar>
 
+<div class="toolbar-nav">
+  <div class="nav-wrapper">
+    <button mat-flat-button color="primary" class="button" (click)="addTask()">Add task</button>
+    <mat-form-field appearance="outline" class="search-field" color="primary">
+      <mat-label>Search</mat-label>
+      <input matInput type="text" [(ngModel)]="term">
+      <button *ngIf="term" matSuffix mat-icon-button aria-label="Clear" (click)="term=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="select-field" color="primary">
+      <mat-label>Category</mat-label>
+      <mat-select
+        disableOptionCentering="true"
+        [(value)]="selectedCategory"
+      >
+        <mat-option *ngFor="let category of categoryList" [value]="category">
+          {{category}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="task-container example-list"
+     cdkDropList
+     (cdkDropListDropped)="dropDone()"
+     cdkDropListSortingDisabled="true"
+>
+  <app-task *ngFor="let task of taskList | filterTasks: term : selectedCategory"
+            cdkDrag
+            [task]="task"
+            (deleteClick)="onDelete(task)"
+            (editClick)="onEdit(task)"
+            (doneClick)="onDone(task)"
+            (cdkDragStarted)="dragStarted(task)"
+  ></app-task>
+</div>
+
+<div>
+  <app-drag-drop-receiver
+    [draggableTask]="draggableTask"
+    [isDragStarted]="isDragStarted"
+    (dragDone)="onDone($event)"
+  ></app-drag-drop-receiver>
+</div>

@@ -1,0 +1,25 @@
+
+:host {
+  position: fixed;
+  height: 0;
+  width: 100%;
+  background-color: var(--deep-purple-primary);
+  transition: height 1s, font-size 1s;
+  font-size: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.dragged {
+    height: 15vh;
+    font-size: 36px;
+  }
+}
+
+.drag-field {
+  color: var(--font-white);
+
+  span {
+    color: var(--warn);
+  }
+}
