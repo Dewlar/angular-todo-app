@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="form"><!--   (ngSubmit)="onApplyClick()"   -->
+<form [formGroup]="form" class="form">
   <mat-form-field appearance="outline" color="primary">
     <mat-label>Label</mat-label>
     <input matInput formControlName="label">
@@ -21,7 +21,7 @@
   </mat-form-field>
 </form>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close color="primary">Cancel</button> <!-- (click)="onCancelClick()"-->
+  <button mat-button mat-dialog-close color="primary" (click)="onCancelClick()">Cancel</button>
   <button mat-button cdkFocusInitial color="primary" (click)="onApplyClick()">Save</button>
   <mat-error *ngIf="form.invalid && label.touched && description.touched && category.touched || formErr">{{'Fill in all required fields'}}</mat-error>
 </div>

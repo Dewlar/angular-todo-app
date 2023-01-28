@@ -54,7 +54,7 @@ export class TaskEditorComponent implements OnInit {
     }
   }
 
-  // onCancelClick() {
-    // this.dialogRef.close();
-  // }
+  onCancelClick() {
+    this.dialogRef.close();
+  }
 }
