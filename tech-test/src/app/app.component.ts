@@ -1,14 +1,13 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
 import {TaskService} from './shared/services';
 import {ITaskModel} from './shared/models';
-import {map, switchMap, take, tap} from 'rxjs/operators';
+import {switchMap, take, tap} from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
 import {TaskConfirmationDialogComponent} from './shared/components/task-confirmation-dialog/task-confirmation-dialog.component';
 import {of} from 'rxjs';
 import * as dayjs from 'dayjs';
 import {TaskEditorComponent} from './shared/components/task-editor/task-editor.component';
-import {CategoryEnum, CategoryEnumFilter} from './shared/enums';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {CategoryEnumFilter} from './shared/enums';
 
 @Component({
   selector: 'app-root',
@@ -38,7 +37,6 @@ export class AppComponent {
       .pipe(
         take(1),
         tap(list => {
-          // this.taskList = list.sort( (task) => { if (task.done === false) { return -1; } else { return 1; }});
           this.taskList = list.reduce( (acc, val) => val.done ? acc : [...acc, val], []).concat(list.filter( task => task.done));
           this.cdr.detectChanges();
         })
@@ -53,16 +51,12 @@ export class AppComponent {
     dialogRef.afterClosed()
       .pipe(
         switchMap( data => {
-          // if (data) {
             return this.taskService.createTask({
               label: data.label,
               description: data.description,
               category: data.category,
               done: false
             });
-          // } else {
-          //   return of({});
-          // }
         }),
         switchMap(() => this.getTaskList())
       )
@@ -131,18 +125,14 @@ export class AppComponent {
     });
 
     dialogRef.afterClosed()
-      .pipe(
-        switchMap( confirmed => {
-          if (confirmed) {
-            task.done = task.done ? false : dayjs().format('DD-MM-YYYY');
-            return keepEdit ? of(this.onEdit(task)) : this.taskService.editTask(task);
+      .subscribe((confirmed) => {
+        if (confirmed) {
+          task.done = task.done ? false : dayjs().format('DD-MM-YYYY');
+          if (keepEdit) { this.onEdit(task);
           } else {
-            return of(false);
-          }
-        }),
-        switchMap( () => this.getTaskList())
-      )
-      .subscribe();
+            this.taskService.editTask(task).subscribe(() => this.getTaskList().subscribe()); }
+        }
+      });
   }
 
   dragStarted(task: ITaskModel) {
