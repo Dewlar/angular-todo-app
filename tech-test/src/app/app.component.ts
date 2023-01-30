@@ -103,26 +103,21 @@ export class AppComponent {
   }
 
   onDone(task: ITaskModel, keepEdit?: string) {
-    const dialogData = {
-      done:
-        {
-          title: 'Done Task',
-          content: 'Do you want to mark this task done?',
-          cancel: 'No',
-          apply: 'Yes',
-        },
-      unDone:
-        {
-          title: 'Undone Task',
-          content: 'Do you want to continue this task?',
-          cancel: 'No',
-          apply: 'Yes',
-        },
-    };
+    const data = task.done
+      ? {
+        title: 'Undone Task',
+        content: 'Do you want to continue this task?',
+        cancel: 'No',
+        apply: 'Yes',
+      }
+      : {
+        title: 'Done Task',
+        content: 'Do you want to mark this task done?',
+        cancel: 'No',
+        apply: 'Yes',
+      };
 
-    const dialogRef = this.dialog.open(TaskConfirmationDialogComponent, {
-      data: task.done ? dialogData.unDone : dialogData.done
-    });
+    const dialogRef = this.dialog.open(TaskConfirmationDialogComponent, { data });
 
     dialogRef.afterClosed()
       .subscribe((confirmed) => {

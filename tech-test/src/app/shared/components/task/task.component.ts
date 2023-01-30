@@ -21,7 +21,7 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.task.done ? this.checkIcon = '' : this.checkIcon = '_outlined';
+    this.checkIcon = this.task.done ?  '' : '_outlined';
   }
 
   onDeleteButtonClick() {
