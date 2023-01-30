@@ -37,7 +37,7 @@ export class AppComponent {
       .pipe(
         take(1),
         tap(list => {
-          this.taskList = list.reduce( (acc, val) => val.done ? acc : [...acc, val], []).concat(list.filter( task => task.done));
+          this.taskList = list.sort( (a, b) => !!a.done < !!b.done ? -1 : 1 );
           this.cdr.detectChanges();
         })
       );
