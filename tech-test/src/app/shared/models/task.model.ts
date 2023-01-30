@@ -8,9 +8,4 @@ export interface ITaskModel {
   done: boolean | string;
 }
 
-export interface IConfirmationDialog {
-  title: string;
-  content: string;
-  cancel: string;
-  apply: string;
-}
+
