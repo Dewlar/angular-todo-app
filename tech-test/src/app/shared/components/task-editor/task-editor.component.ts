@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {CategoryEnum} from '../../enums';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ITaskModel} from '../../models';
 
 @Component({
@@ -11,15 +11,20 @@ import {ITaskModel} from '../../models';
 })
 export class TaskEditorComponent implements OnInit {
   categoryList = Object.values(CategoryEnum);
-  form = new FormGroup({
-    label: new FormControl('', [Validators.required, Validators.minLength(1)]),
-    category: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required, Validators.minLength(1)]),
-  });
+  form: FormGroup;
+  labelControl = new FormControl(
+    '',
+    [Validators.required, Validators.maxLength(20)]);
+  categoryControl = new FormControl(
+    '',
+    [Validators.required]);
+  descriptionControl = new FormControl(
+    '',
+    [Validators.required, Validators.minLength(1)]);
   task: ITaskModel;
-  formErr = false;
 
   constructor(
+    private fb: FormBuilder,
     public dialogRef: MatDialogRef<TaskEditorComponent>,
     @Inject(MAT_DIALOG_DATA) data: ITaskModel,
   ) {
@@ -27,6 +32,11 @@ export class TaskEditorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      label: this.labelControl,
+      category: this.categoryControl,
+      description: this.descriptionControl
+    });
     if (this.task) {
       this.form.setValue({
         label: this.task.label,
@@ -36,21 +46,9 @@ export class TaskEditorComponent implements OnInit {
     }
   }
 
-  get label() {
-    return this.form.get('label');
-  }
-  get category() {
-    return this.form.get('category');
-  }
-  get description() {
-    return this.form.get('description');
-  }
-
   onApplyClick() {
     if (this.form.valid) {
       this.dialogRef.close(this.form.value);
-    } else {
-      this.formErr = true;
     }
   }
 

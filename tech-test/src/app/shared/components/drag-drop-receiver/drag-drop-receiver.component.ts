@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostBinding, HostListener, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostBinding, HostListener, Input, OnChanges, Output} from '@angular/core';
 import {ITaskModel} from '../../models';
 
 @Component({
@@ -6,7 +6,7 @@ import {ITaskModel} from '../../models';
   templateUrl: './drag-drop-receiver.component.html',
   styleUrls: ['./drag-drop-receiver.component.scss']
 })
-export class DragDropReceiverComponent implements OnInit, OnChanges {
+export class DragDropReceiverComponent implements OnChanges {
   @Input() draggableTask: ITaskModel;
   @Input() isDragStarted: boolean;
   @Output() dragDone = new EventEmitter();
@@ -25,9 +25,6 @@ export class DragDropReceiverComponent implements OnInit, OnChanges {
   @HostListener('mouseup') dragEnd() {
     this.dragDone.emit(this.draggableTask);
   }
-  constructor() {  }
-
-  ngOnInit(): void {  }
 
   ngOnChanges(): void {
     if (this.draggableTask.done) {
