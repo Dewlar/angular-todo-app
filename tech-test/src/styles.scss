@@ -25,4 +25,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
   width: 100%;
 }
 
-
+app-task.cdk-drag-placeholder .task-wrapper{
+  opacity: 0;
+}
